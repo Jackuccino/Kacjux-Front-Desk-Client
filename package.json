@@ -1,0 +1,26 @@
+{
+  "name": "kacjux_front_desk_client",
+  "version": "1.0.0",
+  "description": "This is the UI that is used at the front desk. It provides an order list for the day and can be able to search any order from a given date.",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/Jackuccino/kacjux-front-desk-client.git"
+  },
+  "author": "JinJie Xu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/Jackuccino/kacjux-front-desk-client/issues"
+  },
+  "homepage": "https://gitlab.com/Jackuccino/kacjux-front-desk-client#readme",
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "electron": "^4.0.5",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.7"
+  }
+}
