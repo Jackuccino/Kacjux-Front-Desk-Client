@@ -80,7 +80,6 @@ fetchData = () => {
         // Create a view for each order
         orders.forEach(order => {
           const fullOrder = order.order;
-
           if (counter === 0) {
             // a row in the order list
             $row = $('<div class="row"></div>');
@@ -102,17 +101,13 @@ fetchData = () => {
           const $tableNo = $('<h5 class="mb-1"></h5>').html(
             "Table #" + order.tableNum
           );
-          // order number
-          const $orderNo = $("<small></small>").html(
-            "Order No.: " + order.orderNo
-          );
-          // Appending table number and order number to header
-          $headerContainer.append([$tableNo, $orderNo]);
           // list of order items
           const $orderItems = $("<ul></ul>");
+          let totalPrice = 0.0;
           // Add each order item to the list
           fullOrder.forEach(item => {
             const orderItem = item.order;
+            totalPrice += +parseFloat(orderItem.TotalPrice.slice(1)).toFixed(2);
             // Get the order item name
             Server.getItem(orderItem.OrderItem)
               .then(res => {
@@ -126,6 +121,12 @@ fetchData = () => {
                 console.log(err);
               });
           });
+          // order number
+          const $totalPrice = $("<small></small>").html(
+            "Total Price: $" + totalPrice
+          );
+          // Appending table number and order number to header
+          $headerContainer.append([$tableNo, $totalPrice]);
           // Note header
           const $noteHeader = $("<h6>Note:</h6>");
           // note content
