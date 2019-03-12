@@ -1,5 +1,4 @@
 const Server = require("../services/server");
-const $ = require("jquery");
 
 const colsInRow = 3;
 let preRes = null;

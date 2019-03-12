@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link
+      rel="stylesheet"
+      href="../../node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+    <script>
+      let $ = require("jquery");
+    </script>
+    <script>
+      require("popper.js");
+    </script>
+    <script>
+      require("bootstrap");
+    </script>
+    <title>Search History</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <form>
+        <div class="form-group row">
+          <label for="tableNum" class="col-sm-1 col-form-label">Table#:</label>
+          <div class="col-sm-3">
+            <input
+              required
+              type="number"
+              class="form-control"
+              id="tableNum"
+              placeholder="Enter table#"
+            />
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+
+    <script>
+      const { ipcRenderer } = require("electron");
+      const url = require("url");
+      const path = require("path");
+
+      const form = document.querySelector("form");
+
+      submitForm = e => {
+        e.preventDefault();
+        const tableNum = document.querySelector("#tableNum").value;
+        ipcRenderer.send("history:table", tableNum);
+      };
+
+      form.addEventListener("submit", submitForm);
+    </script>
+  </body>
+</html>

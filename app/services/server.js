@@ -1,6 +1,15 @@
 const apiCloseOrder = "http://96.41.173.63:8080/api/orders/close-order/";
 const apiGetOrders = "http://96.41.173.63:8080/api/orders/";
 const apiGetItem = "http://96.41.173.63:8080/api/items/";
+const apiSearchHistory =
+  "http://96.41.173.63:8080/api/orders/search-table-order/";
+
+exports.searchHistory = id => {
+  return $.ajax({
+    method: "GET",
+    url: apiSearchHistory + id
+  });
+};
 
 exports.closeOrder = id => {
   return $.ajax({
